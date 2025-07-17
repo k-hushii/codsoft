@@ -1,6 +1,6 @@
 contacts = {}
 
-while true:
+while True:
     print("\n Contact Book")
     print("1. Create Contact")
     print("2. View Contact")
@@ -9,33 +9,35 @@ while true:
     print("5. Search Contact")
     print("6. Exit")
 
-    choice= int(input("Enter your choice: "))
+    choice = int(input("Enter your choice: "))
 
     if choice == 1:
         name = input("Enter the name: ")
         if name in contacts:
-            print(f'Contact name {name} already exists. ')
+            print(f'Contact name {name} already exists.')
         else:
             age = input("Enter age: ")
             email = input("Enter email: ")
             mobile = input("Enter mobile number: ")
-            contacts[name] = {'age':int(age), 'email':email, 'mobile':mobile}
-            print(f"Contact name{name} has been succesfully created!")
-    
+            contacts[name] = {'age': int(age), 'email': email, 'mobile': mobile}
+            print(f"Contact name {name} has been successfully created!")
+
     elif choice == 2:
         name = input("Enter contact name to view: ")
         if name in contacts:
             contact = contacts[name]
-            print(f"Name: {name}, Age: {age}, Mobile Number: {mobile}")
-        else: 
+            print(f"Name: {name}, Age: {contact['age']}, Mobile Number: {contact['mobile']}, Email: {contact['email']}")
+        else:
             print("Contact not found")
+
     elif choice == 3:
-        name= input("Enter name to update contact: ")
+        name = input("Enter name to update contact: ")
         if name in contacts:
             age = input("Enter updated age: ")
             email = input("Enter updated email: ")
-            mobile = input("Enter update mobile number: ")
-            contacts[name] = {'age':int(age), 'email':email, 'mobile':mobile}
+            mobile = input("Enter updated mobile number: ")
+            contacts[name] = {'age': int(age), 'email': email, 'mobile': mobile}
+            print(f"Contact name {name} has been successfully updated!")
         else:
             print("Contact not found.")
 
@@ -43,7 +45,7 @@ while true:
         name = input("Enter contact name to be deleted: ")
         if name in contacts:
             del contacts[name]
-            print(f"Contact name {name} has been succsesfully deleted!")
+            print(f"Contact name {name} has been successfully deleted!")
         else:
             print("Contact not found")
 
@@ -52,14 +54,14 @@ while true:
         found = False
         for name, contact in contacts.items():
             if search_name.lower() in name.lower():
-                print(f"Found- Name {name}, Age: {age}, Mobile Number: {mobile},    Email: {email}")
-                found= True
+                print(f"Found - Name: {name}, Age: {contact['age']}, Mobile Number: {contact['mobile']}, Email: {contact['email']}")
+                found = True
         if not found:
             print("No contact found with that name")
 
-    elif choice == 7:
+    elif choice == 6:
         print("Closed")
         break
 
     else:
-        print("Invalid input")  
+        print("Invalid input")
